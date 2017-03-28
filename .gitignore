@@ -1,2 +1,3 @@
-terraform.state
-terraform.state.backup
+*.state
+*.state.backup
+*.terraform*
