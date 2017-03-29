@@ -1,3 +1,2 @@
-*.state
-*.state.backup
-*.terraform*
+*.tfstate
+*.tfstate.backup
