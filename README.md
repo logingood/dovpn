@@ -73,6 +73,11 @@ Get PSK key from the output, we are using hex format, so you need to grep hex
 terraform show
 ```
 
+Configure your device accordingly:
+
+![alt text](https://github.com/murat1985/dovpn/blob/master/iphone_vpn.png "iphone ipsec ikev2 vpn")
+
+
 # TODO
 
 - Add Xauth support
