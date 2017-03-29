@@ -12,6 +12,11 @@ apt-get install -y letsencrypt strongswan
 apt-get install vim
 apt-get install -y apparmor-utils
 aa-disable /usr/lib/ipsec/charon
+iptables -t nat  -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
+service strongswan start
+sleep 10
+service strongswan restart
+
 
 
 echo droplet phone : PSK \"${1}\" >> /etc/ipsec.secrets
