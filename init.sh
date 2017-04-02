@@ -69,3 +69,8 @@ EOF
 
 
 service strongswan start
+
+sleep 10
+
+service strongswan restart
+
