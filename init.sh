@@ -16,11 +16,6 @@ apt-get install vim
 apt-get install -y apparmor-utils
 aa-disable /usr/lib/ipsec/charon
 iptables -t nat  -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
-service strongswan start
-sleep 10
-service strongswan restart
-
-
 
 echo droplet phone : PSK \"${1}\" >> /etc/ipsec.secrets
 echo "syntax on" >> /root/.vimrc
@@ -71,3 +66,6 @@ conn rw
 	esp=aes256-sha256,aes256-sha1,3des-sha1! # Win 7 is aes256-sha1, iOS is aes256-sha256, OS X is 3des-shal1
 	rekey=no
 EOF
+
+
+service strongswan start
