@@ -16,6 +16,7 @@ vpnup:
 
 ifeq ($(STRONGSWAN_CLIENT), 0)
 	@echo "phone droplet : PSK \"${IPSEC_KEY}\"" > /etc/ipsec.secrets
+	@sleep 120
 	@service strongswan restart
 else
 	@echo "strongswan is not installed"
