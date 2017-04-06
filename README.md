@@ -5,15 +5,10 @@ This repository allows to create [Digital Ocean](https://m.do.co/c/eb230fc23336)
 
 Strongswan is configured to accept remote-access IPSEC VPN IKEv2 connections, with the following transform sets:
 
-* IKE phase 1:
+* IKEv2 transforms:
 - `aes256-sha256-modp1024` IOS 9+ for Apple iPad, iPhone and etc
 - `aes256-sha1-modp1024` Win 7
 - `3des-sha1-modp1024` OS X
-
-* IKE phase 2:
-- `aes256-sha256` IOS
-- `aes256-sha1` Win 7
-- `3des-sha1` OS X
 
 As authentication is used PSK (shared-key). PSK is being generated using Terraform resource `random_id"`, e.g.
 
