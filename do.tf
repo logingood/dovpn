@@ -1,4 +1,5 @@
 variable "do_token" {}
+variable "do_region" {}
 variable "ssh_key" {}
 variable "domain_name" {}
 variable "droplet_name" {}
@@ -29,7 +30,7 @@ data "template_file" "init" {
 resource "digitalocean_droplet" "mydroplet" {
   image    = "ubuntu-16-04-x64"
   name     = "${var.droplet_name}"
-  region   = "blr1"
+  region   = "${var.do_region}"
   size     = "512mb"
   ssh_keys = ["${digitalocean_ssh_key.do_sshkey.id}"]
   user_data = "${data.template_file.init.rendered}"
