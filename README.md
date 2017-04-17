@@ -62,6 +62,12 @@ Create a droplet:
 make apply
 ```
 
+Destroy configuration:
+
+```
+make destroy
+```
+
 Get PSK key from the output, we are using hex format, so you need to grep hex
 
 ```
