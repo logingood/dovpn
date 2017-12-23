@@ -3,14 +3,14 @@
 set -e
 
 apt-get update
-apt-get -y install zfsutils-linux
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-apt-get update
-dd if=/dev/zero of=/var/lib/docker_zfs.img bs=1M count=8192
-zpool create -f zroot /var/lib/docker_zfs.img 
-zfs create -o mountpoint=/var/lib/docker zroot/docker
-apt-get install -y docker-engine
+# apt-get -y install zfsutils-linux
+# apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+# apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+# apt-get update
+# dd if=/dev/zero of=/var/lib/docker_zfs.img bs=1M count=8192
+# zpool create -f zroot /var/lib/docker_zfs.img
+# zfs create -o mountpoint=/var/lib/docker zroot/docker
+# apt-get install -y docker-engine
 apt-get install -y letsencrypt strongswan
 apt-get install vim
 apt-get install -y apparmor-utils
@@ -73,4 +73,3 @@ service strongswan start
 sleep 10
 
 service strongswan restart
-
