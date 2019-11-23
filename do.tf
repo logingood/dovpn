@@ -1,7 +1,6 @@
 variable "do_token" {}
 variable "do_region" {}
 variable "ssh_key" {}
-variable "domain_name" {}
 variable "droplet_name" {}
 
 # Configure the DigitalOcean Provider
@@ -33,18 +32,6 @@ resource "digitalocean_droplet" "mydroplet" {
   region   = "${var.do_region}"
   size     = "512mb"
   ssh_keys = ["${digitalocean_ssh_key.do_sshkey.id}"]
+  ipv6 = true
   user_data = "${data.template_file.init.rendered}"
-}
-
-
-resource "digitalocean_domain" "my-domain" {
-  name       = "${var.domain_name}"
-  ip_address = "${digitalocean_droplet.mydroplet.ipv4_address}"
-}
-
-resource "digitalocean_record" "mydroplet" {
-  domain = "${digitalocean_domain.my-domain.name}"
-  type   = "A"
-  name   = "${var.droplet_name}"
-  value  = "${digitalocean_droplet.mydroplet.ipv4_address}"
 }
