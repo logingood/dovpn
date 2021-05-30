@@ -12,10 +12,12 @@ apt-get update
 # zfs create -o mountpoint=/var/lib/docker zroot/docker
 # apt-get install -y docker-engine
 apt-get install -y letsencrypt strongswan
-apt-get install vim
-apt-get install -y apparmor-utils
+apt-get install -y apparmor-utils vim
 aa-disable /usr/lib/ipsec/charon
 iptables -t nat  -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
+sysctl -w net.ipv4.ip_forward=1
+sysctl -p
+
 
 echo droplet phone : PSK \"${1}\" >> /etc/ipsec.secrets
 echo "syntax on" >> /root/.vimrc
